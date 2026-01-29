@@ -1,0 +1,19 @@
+/* EmptyState.module.css */
+.container {
+  padding: 3rem 2rem;
+  text-align: center;
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background: #007bff;
+  color: white;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+}

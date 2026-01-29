@@ -1,0 +1,12 @@
+.mainArea {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* This is now the scrollable background area */
+.content {
+  padding: 1rem;
+  flex: 1;
+  overflow-y: auto;
+}

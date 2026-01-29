@@ -1,0 +1,35 @@
+.header {
+  height: 60px;
+  border-bottom: 1px solid #ddd;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.button {
+  background: #111;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  border: none;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.button:hover {
+  background: #333;
+}
