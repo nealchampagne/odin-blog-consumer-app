@@ -30,7 +30,8 @@ The project is a **proof‑of‑concept**, designed to demonstrate a clean separ
 ## **Tech Stack**
 - **React + Vite**  
 - **TypeScript**  
-- **React Router**  
+- **React Router**
+- **Zustand** (client-side state)  
 - **Native `fetch` API**
 - **CSS Modules** for scoped styling  
 - **Vite environment variables** for API configuration
@@ -136,3 +137,8 @@ Future enhancements could include:
 - search  
 - categories/tags  
 - infinite scroll
+
+---
+
+## **License**
+MIT (or your preferred license)
