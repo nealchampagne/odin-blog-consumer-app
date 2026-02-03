@@ -1,73 +1,138 @@
-# React + TypeScript + Vite
+# Odin Blog Owner App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+This is my implimentation of the Admin Frontend for the Blog API project from the NodeJS course of the Odin Project's Full-Stack JavaScript curriculum.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Absolutely, Neal — here’s a clean, professional, POC‑appropriate README for your **consumer (reader) frontend**. It mirrors the tone of your admin README but focuses on the public‑facing experience, the static nature of the app, and your lightweight tech choices (fetch + CSS modules).
 
-## React Compiler
+You can drop this directly into your repo.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+# **Reader Frontend – README**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## **Overview**
+This is the **public-facing Reader Frontend** for the Odin Blog project.  
+It provides a clean, lightweight interface for browsing published blog posts, reading full articles, and viewing comment threads.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+This frontend is intentionally minimal — it focuses on fast load times, simple navigation, and a clear separation from the admin dashboard. All content is fetched from the standalone backend API.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+The project is a **proof‑of‑concept**, designed to demonstrate a clean separation between:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- a public reader frontend  
+- a private admin frontend  
+- a standalone backend API  
+- a managed Postgres database
+
+---
+
+## **Tech Stack**
+- **React + Vite**  
+- **TypeScript**  
+- **React Router**  
+- **Native `fetch` API**
+- **CSS Modules** for scoped styling  
+- **Vite environment variables** for API configuration
+- **JWT‑based authentication** (stored in memory or localStorage depending on your setup)
+
+---
+
+## **Environment Variables**
+The reader app communicates with the backend API using a single environment variable:
+
+```
+VITE_API_URL=https://your-backend-url.com
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+During local development:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+VITE_API_URL=http://localhost:3000
+```
+
+This must be set before running or building the project.
+
+---
+
+## **Running Locally**
+
+### **Install dependencies**
+```
+npm install
+```
+
+### **Start the dev server**
+```
+npm run dev
+```
+
+Vite will start the app on a local port (usually `5173`).
+
+The reader UI will automatically fetch:
+
+- paginated posts  
+- individual post content  
+- comment threads  
+
+from the backend API.
+
+---
+
+## **Build for Production**
+```
+npm run build
+```
+
+The optimized static output will be placed in:
+
+```
+dist/
+```
+
+This folder can be deployed to any static hosting provider.
+
+---
+
+## **Deployment**
+This project is designed to deploy cleanly to free static hosts such as:
+
+- **Netlify**  
+- **Vercel**  
+- **Render (Static Site)**  
+- **GitHub Pages** (with hash routing or a 404 fallback)  
+
+### **Required environment variable**
+Set:
+
+```
+VITE_API_URL=https://your-backend.onrender.com
+```
+
+Your hosting provider will inject this at build time.
+
+## **Features**
+- Public browsing of published posts  
+- Post detail pages  
+- Comment thread display  
+- Pagination  
+- Clean, modular CSS  
+- Lightweight fetch‑based API client  
+- Fast static delivery  
+
+---
+
+## **Project Status**
+This is a **proof‑of‑concept** implementation intended to validate:
+
+- frontend → backend API communication  
+- pagination and post rendering  
+- comment contribution, editing, and deletion
+- deployment pipeline for static sites  
+- separation between public and admin interfaces  
+
+Future enhancements could include:
+
+- search  
+- categories/tags  
+- infinite scroll

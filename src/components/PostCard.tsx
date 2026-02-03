@@ -7,8 +7,28 @@ type Props = {
   post: Post;
 }
 
+// Component to display a summary card for a blog post
 const PostCard = ({ post }: Props) => {
   const navigate = useNavigate();
+
+  const formatPublishedAt = (dateString: string | null) => {
+    if (!dateString) return "N/A";
+
+    const date = new Date(dateString);
+
+    const datePart = date.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+
+    const timePart = date.toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "2-digit",
+    });
+
+    return `${datePart} - ${timePart}`;
+  };
 
   return (
     <div className={styles.card}>
@@ -19,7 +39,7 @@ const PostCard = ({ post }: Props) => {
       </p>
 
       <div className={styles.meta}>
-        {new Date(post.createdAt).toLocaleDateString()}
+        {formatPublishedAt(post.publishedAt ?? null)}
       </div>
 
       <button

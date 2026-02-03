@@ -7,6 +7,7 @@ import EmptyState from "../components/EmptyState";
 import type { Post } from "../types/post";
 import PostCard from "../components/PostCard";
 
+// Display blog post previews with pagination
 const PostsList = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
@@ -52,31 +53,30 @@ const PostsList = () => {
             ))}
           </div>
 
-
           {/* Pagination Controls */}
           {totalPages > 1 && (
-          <div className={styles.pagination}>
-            <button
-              disabled={page === 1}
-              onClick={() => setPage(page - 1)}
-              className={styles.pageButton}
-            >
-              Previous
-            </button>
+            <div className={styles.pagination}>
+              <button
+                disabled={page === 1}
+                onClick={() => setPage(page - 1)}
+                className={styles.pageButton}
+              >
+                Previous
+              </button>
 
-            <span className={styles.pageInfo}>
-              Page {page} of {totalPages}
-            </span>
+              <span className={styles.pageInfo}>
+                Page {page} of {totalPages}
+              </span>
 
-            <button
-              disabled={page === totalPages}
-              onClick={() => setPage(page + 1)}
-              className={styles.pageButton}
-            >
-              Next
-            </button>
-          </div>
-        )}
+              <button
+                disabled={page === totalPages}
+                onClick={() => setPage(page + 1)}
+                className={styles.pageButton}
+              >
+                Next
+              </button>
+            </div>
+          )}
 
         </>
       )}
