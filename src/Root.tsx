@@ -1,7 +1,7 @@
 import React from "react";
 import { RouterProvider } from "react-router-dom";
-import { router } from "./router";
-import { useAuth } from "./store/auth";
+import { router } from "./router/index.jsx";
+import { useAuth } from "./store/auth.js";
 
 const Root = () => {
   const restore = useAuth(s => s.restore);

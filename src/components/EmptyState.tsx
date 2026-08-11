@@ -1,4 +1,3 @@
-// components/EmptyState.tsx
 import { Link } from "react-router-dom";
 import styles from "./EmptyState.module.css";
 

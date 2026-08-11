@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../store/auth";
+import { useAuth } from "../store/auth.js";
 import styles from "./Login.module.css";
 
 const Login = () => {
@@ -23,20 +23,26 @@ const Login = () => {
     <div className={styles.container}>
       <h1 className={styles.title}>Log In</h1>
 
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <label className={styles.label}>Email</label>
+      <form className={styles.form} onSubmit={handleSubmit} aria-label="login-form">
+        <label className={styles.label} htmlFor="email">
+          Email
+        </label>
         <input
           className={styles.input}
           type="email"
+          id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
 
-        <label className={styles.label}>Password</label>
+        <label className={styles.label} htmlFor="password">
+          Password
+        </label>
         <input
           className={styles.input}
           type="password"
+          id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required

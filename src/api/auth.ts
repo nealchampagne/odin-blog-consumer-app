@@ -1,5 +1,5 @@
-import api from "./client";
-import type { LoginResponse } from "../types/auth";
+import api from "./client.js";
+import type { LoginResponse } from "../types/auth.js";
 
 const loginRequest = async (email: string, password: string) => {
   return api<LoginResponse>("/users/login", {

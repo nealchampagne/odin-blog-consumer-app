@@ -1,6 +1,6 @@
-import api from "./client";
-import type { Comment } from "../types/comment";
-import type { PaginatedResponse } from "../types/pagination";
+import api from "./client.js";
+import type { Comment } from "../types/comment.js";
+import type { PaginatedResponse } from "../types/pagination.js";
 
 // Get all comments for a post (non-paginated)
 const getAllCommentsForPost = (postId: string) =>

@@ -1,6 +1,6 @@
-import api from "./client";
-import type { Post } from "../types/post";
-import type { PaginatedResponse } from "../types/pagination";
+import api from "./client.js";
+import type { Post } from "../types/post.js";
+import type { PaginatedResponse } from "../types/pagination.js";
 
 const getPosts = (page = 1, pageSize = 10) => 
   api<PaginatedResponse<Post>>(`/posts?page=${page}&pageSize=${pageSize}`);

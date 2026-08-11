@@ -2,16 +2,16 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from "./PostDetail.module.css";
 
-import { getPost } from "../api/posts";
+import { getPost } from "../api/posts.js";
 import {
   getCommentsForPost,
   createComment,
   deleteComment,
   updateComment
-} from "../api/comments";
+} from "../api/comments.js";
 
-import type { Post } from "../types/post";
-import type { Comment } from "../types/comment";
+import type { Post } from "../types/post.js";
+import type { Comment } from "../types/comment.jsx";
 
 import ReactMarkdown from "react-markdown";
 import { useNavigate } from "react-router-dom";

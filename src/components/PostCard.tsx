@@ -1,7 +1,7 @@
 import styles from "./PostCard.module.css";
 import { useNavigate } from "react-router-dom";
-import type { Post } from "../types/post";
-import { getPreview } from "../utils/text";
+import type { Post } from "../types/post.js";
+import { getPreview } from "../utils/text.js";
 
 type Props = {
   post: Post;

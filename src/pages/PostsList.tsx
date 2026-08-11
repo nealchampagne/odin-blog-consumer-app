@@ -1,11 +1,11 @@
 import { useEffect, useState, useCallback} from "react";
 import styles from "./PostsList.module.css";
 
-import { getPosts } from "../api/posts";
-import EmptyState from "../components/EmptyState";
+import { getPosts } from "../api/posts.js";
+import EmptyState from "../components/EmptyState.jsx";
 
-import type { Post } from "../types/post";
-import PostCard from "../components/PostCard";
+import type { Post } from "../types/post.js";
+import PostCard from "../components/PostCard.jsx";
 
 // Display blog post previews with pagination
 const PostsList = () => {
@@ -20,8 +20,13 @@ const PostsList = () => {
     setLoading(true);
 
     const res = await getPosts(page, pageSize);
-    setPosts(res.data);
-    setTotalPages(res.totalPages);
+
+    // Defensive checks
+    const data = Array.isArray(res?.data) ? res.data : [];
+    setPosts(data);
+
+    const pages = typeof res?.totalPages === "number" ? res.totalPages : 1;
+    setTotalPages(pages);
 
     setLoading(false);
   }, [page, pageSize]);

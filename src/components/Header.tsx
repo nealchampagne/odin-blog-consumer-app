@@ -1,4 +1,4 @@
-import { useAuth } from "../store/auth";
+import { useAuth } from "../store/auth.js";
 import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
 

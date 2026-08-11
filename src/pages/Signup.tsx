@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Signup.module.css";
-import { signupRequest } from "../api/auth";
+import { signupRequest } from "../api/auth.js";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -20,13 +20,11 @@ const Signup = () => {
 
     try {
       const res = await signupRequest(name, email, password);
-
       localStorage.setItem("token", res.token);
       localStorage.setItem("user", JSON.stringify(res.user));
-
       navigate("/login");
-    } catch {
-      setError("Failed to create account.");
+    } catch (err: unknown) {
+      setError((err as Error).message || "Failed to create account.");
     }
   };
 
@@ -36,10 +34,11 @@ const Signup = () => {
 
       {error && <p className={styles.error}>{error}</p>}
 
-      <label className={styles.label}>
+      <label className={styles.label} htmlFor="name">
         Name
       </label>
       <input
+        id="name"
         className={styles.input}
         type="text"
         placeholder="Name"
@@ -48,10 +47,11 @@ const Signup = () => {
         required
       />
 
-      <label className={styles.label}>
+      <label className={styles.label} htmlFor="email">
         Email <span className={styles.required}>*</span>
       </label>
       <input
+        id="email"
         className={styles.input}
         type="email"
         placeholder="Email"
@@ -60,10 +60,11 @@ const Signup = () => {
         required
       />
 
-      <label className={styles.label}>
+      <label className={styles.label} htmlFor="password">
         Password <span className={styles.required}>*</span>
       </label>
       <input
+        id="password"
         className={styles.input}
         type="password"
         placeholder="Password"
@@ -72,10 +73,11 @@ const Signup = () => {
         required
       />
 
-      <label className={styles.label}>
+      <label className={styles.label} htmlFor="confirmPassword">
         Confirm password <span className={styles.required}>*</span>
       </label>
       <input
+        id="confirmPassword"
         className={styles.input}
         type="password"
         placeholder="Password"
@@ -97,9 +99,9 @@ const Signup = () => {
 
       <div className={styles.loginPrompt}>
         <span>Already have an account?</span>
-        <a className={styles.loginLink} onClick={() => navigate("/login")}>
+        <Link to="/login" className={styles.loginLink}>
           Log in
-        </a>
+        </Link>
       </div>
     </div>
   );
